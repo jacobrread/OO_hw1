@@ -1,39 +1,60 @@
-namespace Shape
+/**
+each shape can be a circle, ellipse, triangle (equilateral, isosceles, or scalene),
+square, rectangle, regular polygon, or convex polygon.
+**/
+namespace Shapes
 {
-    abstract class Shape
+    public abstract class Shape
     {
-      /**
-      each shape can be a circle, ellipse, triangle (equilateral, isosceles, or scalene), square, rectangle,
-      regular polygon, or convex polygon.
-      **/
-      public abstract string Name { get; }
-      public abstract int area { get; set; }
+        public string? Name { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public abstract double Area { get; }
     }
 
-    class Circle : Shape
+    // Regular polygon
+    public class Triangle : Shape // Covers all triangles
     {
-      private string? name;
-      public int radius { get; set; }
-      public int diameter { get; set; }
-      public override string Name
-      {
-        get { return "Circle"; }
-      }
-      public override int area
-      {
-        get { return (int) (Math.PI * Math.Pow(radius, 2)); }
-        set { area = value; }
-      }
+        public override double Area
+        {
+            get { return (0.5 * X * Y); }
+        }
 
+        public Triangle(string name, int x, int y)
+        {
+            this.Name = name;
+            this.X = x;
+            this.Y = y;
+        }
+    }
 
-      static void Main(){
-        Circle circle = new Circle();
-        // circle.radius = 5;
-        // circle.diameter = 10;
-        // circle.area = 78;
-        // Console.WriteLine("The area of the circle is: " + circle.area);
+    public class Ellipse : Shape // Covers both non-circles and circles
+    {
+        public override double Area
+        {
+            get { return (int)(Math.PI * X * Y); }
+        }
 
-        Console.WriteLine(circle.area);
-      }
+        public Ellipse(string name, int x, int y)
+        {
+            this.Name = name;
+            this.X = x;
+            this.Y = y;
+        }
+    }
+
+    public class Rectangle : Shape // Covers both rectangles and squares
+    {
+        public override double Area
+        {
+            get { return (int)(Math.PI * X * Y); }
+        }
+
+        public Rectangle(string name, int x, int y)
+        {
+            this.Name = name;
+            this.X = x;
+            this.Y = y;
+        }
     }
 }
