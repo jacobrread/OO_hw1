@@ -1,0 +1,1 @@
+# HW1 - Strategizing about Shapes

@@ -1,21 +1,23 @@
 ﻿
-using Microsoft.VisualBasic.FileIO;
-/**
-circle, ellipse, triangle (equilateral, isosceles, or scalene),
-square, rectangle, regular polygon, or convex polygon
-**/
 namespace Shapes
 {
+    /// <summary>
+    /// The base class for the program.
+    /// </summary>
     class Strategize
     {
+        /// <summary>
+        /// The entry point for the program.
+        /// </summary>
+        /// <param name="args">A list of command line arguments.</param>
         public static void Main(string[] args)
         {
-            // arg[0] is file type, arg[1] is name of file,
+            // arg[0] is file type, arg[1] is name of file, 
             string fileType = args[0].Split(".").Last();
 
             if (fileType == "xml" | fileType == "json")
             {
-                generatefile(args[0], fileType);
+                GenerateFile(args[0], fileType);
             }
             else
             {
@@ -24,6 +26,9 @@ namespace Shapes
             }
         }
 
+        /// <summary>
+        /// Outputs data to a CSV file.
+        /// </summary>
         public static void Output()
         {
             // Example of data output to CSV
@@ -36,20 +41,33 @@ namespace Shapes
             // https://stackoverflow.com/questions/39749136/how-do-i-create-a-csv-file-in-c-sharp
         }
 
-        public static void generatefile(string filename, string fileType)
+        /// <summary>
+        /// Generates a file of shape objects.
+        /// </summary>
+        /// <param name="filename">The name of the file to be generated.</param>
+        /// <param name="fileType">The type of file to be generated.</param>
+        public static void GenerateFile(string filename, string fileType)
         {
             ShapeList shapeList = new ShapeList();
+            var array = shapeList.getShapes();
 
             if (fileType == "xml")
             {
                 System.Xml.Serialization.XmlSerializer writer =
-                new System.Xml.Serialization.XmlSerializer(typeof(Shape));
+                new System.Xml.Serialization.XmlSerializer(
+                    typeof(Shape),
+                    new Type[] { typeof(Triangle), typeof(Ellipse), typeof(Rectangle)});
 
-                var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//" + filename + ".xml";
-                Console.WriteLine("File Path: " + path);
+                var path = Directory.GetCurrentDirectory() + "//test_data.xml";
+                //Console.WriteLine("File Path: " + path);
                 System.IO.FileStream file = System.IO.File.Create(path);
 
-                writer.Serialize(file, shapeList);
+                foreach (Shape item in array)
+                {
+                    writer.Serialize(file, item);
+                    Console.WriteLine("Shape name: " + item.Name);
+                }
+
                 file.Close();
             }
             else
@@ -59,12 +77,18 @@ namespace Shapes
             }
         }
 
+        /// <summary>
+        /// Generates an array of shape objects.
+        /// </summary>
         private class ShapeList
         {
             private readonly string[] shapeNames = new string[] { "circle", "non-circle", "rectangle", "square", "equillateral", "isosceles", "scalene" };
             private readonly string[] shapeClasses = new string[] { "Triangle", "Ellipse", "Rectangle" };
             public Shape[] shapes = new Shape[20];
 
+            /// <summary>
+            /// Constructor for the ShapeList class.
+            /// </summary>
             public ShapeList()
             {
                 Random rnd = new Random();
@@ -77,48 +101,48 @@ namespace Shapes
                     switch (shapeNames[nameNum])
                     {
                         case "circle":
-                            int radius = rnd.Next(15);
+                            int radius = rnd.Next(1, 15);
                             Shape circle = new Ellipse("circle", radius, radius);
                             shapes[i] = circle;
                             break;
 
                         case "non-circle":
-                            int x = rnd.Next(15);
-                            int y = rnd.Next(15);
+                            int x = rnd.Next(1, 15);
+                            int y = rnd.Next(1, 15);
                             Shape non_circle = new Ellipse("non-circle", x, y);
                             shapes[i] = non_circle;
                             break;
 
                         case "rectangle":
-                            int width = rnd.Next(15);
-                            int height = rnd.Next(15);
+                            int width = rnd.Next(1, 15);
+                            int height = rnd.Next(1, 15);
                             Shape rectangle = new Rectangle("rectangle", width, height);
                             shapes[i] = rectangle;
                             break;
 
                         case "square":
-                            int side = rnd.Next(15);
+                            int side = rnd.Next(1, 15);
                             Shape square = new Rectangle("square", side, side);
                             shapes[i] = square;
                             break;
 
                         case "equillateral":
-                            int base_e = rnd.Next(15);
+                            int base_e = rnd.Next(1, 15);
                             int height_e = base_e;
                             Shape equillateral = new Triangle("equillateral", base_e, height_e);
                             shapes[i] = equillateral;
                             break;
 
                         case "isosceles":
-                            int base_i = rnd.Next(15);
-                            int height_i = rnd.Next(15);
+                            int base_i = rnd.Next(1, 15);
+                            int height_i = rnd.Next(1, 15);
                             Shape isosceles = new Triangle("isosceles", base_i, height_i);
                             shapes[i] = isosceles;
                             break;
 
                         case "scalene":
-                            int base_s = rnd.Next(15);
-                            int height_s = rnd.Next(15);
+                            int base_s = rnd.Next(1, 15);
+                            int height_s = rnd.Next(1, 15);
                             Shape scalene = new Triangle("scalene", base_s, height_s);
                             shapes[i] = scalene;
                             break;
@@ -126,11 +150,13 @@ namespace Shapes
                         default:
                             Console.WriteLine("There was an error with your switch statement when generating shape objects.");
                             break;
-
                     }
                 }
             }
 
+            /// <summary>
+            /// Returns an array of shape objects.
+            /// </summary>
             public Shape[] getShapes()
             {
                 return shapes;
