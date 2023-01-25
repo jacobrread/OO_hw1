@@ -1,4 +1,6 @@
 ﻿
+using System.Text.Json;
+
 namespace Shapes
 {
     /// <summary>
@@ -65,15 +67,21 @@ namespace Shapes
                 foreach (Shape item in array)
                 {
                     writer.Serialize(file, item);
-                    Console.WriteLine("Shape name: " + item.Name);
                 }
 
                 file.Close();
             }
             else
             {
-                Console.WriteLine("handle json");
-                // TODO
+                string jsonString = "";
+
+                foreach (Shape item in array)
+                {
+                    jsonString += JsonSerializer.Serialize(item);
+                }
+                
+                var path = Directory.GetCurrentDirectory() + "//test_data.json";
+                File.WriteAllText(path, jsonString);
             }
         }
 
