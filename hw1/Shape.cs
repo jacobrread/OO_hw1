@@ -7,6 +7,7 @@ namespace Shapes
     /// <summary>
     /// The base class for all shapes.
     /// </summary>
+    [Serializable()]
     public abstract class Shape
     {
         public string? Name { get; set; }
@@ -18,6 +19,7 @@ namespace Shapes
     /// <summary>
     /// A class for all triangles.
     /// </summary>
+    [Serializable()]
     public class Triangle : Shape // Covers all triangles
     {
         public override double Area
@@ -43,11 +45,12 @@ namespace Shapes
     /// <summary>
     /// A class for all ellipses.
     /// </summary>
+    [Serializable()]
     public class Ellipse : Shape // Covers both non-circles and circles
     {
         public override double Area
         {
-            get { return (int)(Math.PI * X * Y); }
+            get { return (Math.PI * X * Y); }
         }
 
         public Ellipse()
@@ -68,11 +71,12 @@ namespace Shapes
     /// <summary>
     /// A class for all rectangles.
     /// </summary>
+    [Serializable()]
     public class Rectangle : Shape // Covers both rectangles and squares
     {
         public override double Area
         {
-            get { return (int)(Math.PI * X * Y); }
+            get { return (X * Y); }
         }
 
         public Rectangle()

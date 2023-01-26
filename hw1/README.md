@@ -22,3 +22,6 @@ to figure out the best way to implement them I realized that all of these shapes
 one or two lengths. It seems like cheating a little bit with the triangles, but 1/2 base * height is conveniently the 
 area formula for every triangle. In the assignment instructions it didn't specify that the side lengths had to be use, 
 so sorry not sorry Trey. 
+
+## Dependencies 
+The only dependency I am using is 'Newtonsoft.json' which is easily available on Visual Studio.

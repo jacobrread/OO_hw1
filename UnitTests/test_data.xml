@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Shapes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Shape>
+    <Shape xsi:type="Rectangle">
+      <Name>square</Name>
+      <X>11</X>
+      <Y>11</Y>
+    </Shape>
+    <Shape xsi:type="Triangle">
+      <Name>isosceles</Name>
+      <X>3</X>
+      <Y>1</Y>
+    </Shape>
+    <Shape xsi:type="Ellipse">
+      <Name>circle</Name>
+      <X>10</X>
+      <Y>10</Y>
+    </Shape>
+    <Shape xsi:type="Rectangle">
+      <Name>square</Name>
+      <X>5</X>
+      <Y>5</Y>
+    </Shape>
+    <Shape xsi:type="Ellipse">
+      <Name>non-circle</Name>
+      <X>1</X>
+      <Y>4</Y>
+    </Shape>
+    <Shape xsi:type="Rectangle">
+      <Name>square</Name>
+      <X>6</X>
+      <Y>6</Y>
+    </Shape>
+    <Shape xsi:type="Triangle">
+      <Name>isosceles</Name>
+      <X>14</X>
+      <Y>5</Y>
+    </Shape>
+    <Shape xsi:type="Rectangle">
+      <Name>rectangle</Name>
+      <X>7</X>
+      <Y>12</Y>
+    </Shape>
+    <Shape xsi:type="Triangle">
+      <Name>scalene</Name>
+      <X>3</X>
+      <Y>13</Y>
+    </Shape>
+    <Shape xsi:type="Triangle">
+      <Name>scalene</Name>
+      <X>14</X>
+      <Y>1</Y>
+    </Shape>
+    <Shape xsi:type="Triangle">
+      <Name>isosceles</Name>
+      <X>8</X>
+      <Y>3</Y>
+    </Shape>
+    <Shape xsi:type="Triangle">
+      <Name>equilateral</Name>
+      <X>11</X>
+      <Y>11</Y>
+    </Shape>
+    <Shape xsi:type="Rectangle">
+      <Name>square</Name>
+      <X>9</X>
+      <Y>9</Y>
+    </Shape>
+    <Shape xsi:type="Triangle">
+      <Name>scalene</Name>
+      <X>5</X>
+      <Y>1</Y>
+    </Shape>
+    <Shape xsi:type="Triangle">
+      <Name>isosceles</Name>
+      <X>11</X>
+      <Y>4</Y>
+    </Shape>
+    <Shape xsi:type="Triangle">
+      <Name>isosceles</Name>
+      <X>1</X>
+      <Y>12</Y>
+    </Shape>
+    <Shape xsi:type="Ellipse">
+      <Name>circle</Name>
+      <X>4</X>
+      <Y>4</Y>
+    </Shape>
+    <Shape xsi:type="Ellipse">
+      <Name>non-circle</Name>
+      <X>3</X>
+      <Y>9</Y>
+    </Shape>
+    <Shape xsi:type="Rectangle">
+      <Name>square</Name>
+      <X>3</X>
+      <Y>3</Y>
+    </Shape>
+    <Shape xsi:type="Rectangle">
+      <Name>rectangle</Name>
+      <X>4</X>
+      <Y>4</Y>
+    </Shape>
+  </Shape>
+</Shapes>

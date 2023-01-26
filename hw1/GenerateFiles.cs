@@ -1,8 +1,11 @@
+using System.Text;
 using System.Text.Json;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Shapes
 {
-  
+
   /// <summary>
   /// Generates an array of shape objects.
   /// </summary>
@@ -99,18 +102,28 @@ namespace Shapes
 
       if (fileType == "xml")
       {
+        // System.Xml.Serialization.XmlSerializer writer =
+        // new System.Xml.Serialization.XmlSerializer(
+        //     typeof(Shape),
+        //     new Type[] { typeof(Triangle), typeof(Ellipse), typeof(Rectangle) });
+        // var path = Directory.GetCurrentDirectory() + "//test_data.xml";
+        // System.IO.FileStream file = System.IO.File.Create(path);
+
+        // foreach (Shape item in shapeArray)
+        // {
+        //     writer.Serialize(file, item);
+        // }
+
+        // file.Close();
+        Shapes shapes = new Shapes();
+        shapes.Shape = shapeArray;
+
         System.Xml.Serialization.XmlSerializer writer =
-        new System.Xml.Serialization.XmlSerializer(
-            typeof(Shape),
+        new System.Xml.Serialization.XmlSerializer(typeof(Shapes),
             new Type[] { typeof(Triangle), typeof(Ellipse), typeof(Rectangle) });
         var path = Directory.GetCurrentDirectory() + "//test_data.xml";
         System.IO.FileStream file = System.IO.File.Create(path);
-
-        foreach (Shape item in shapeArray)
-        {
-          writer.Serialize(file, item);
-        }
-
+        writer.Serialize(file, shapes);
         file.Close();
       }
       else
@@ -119,6 +132,11 @@ namespace Shapes
         var path = Directory.GetCurrentDirectory() + "//test_data.json";
         File.WriteAllText(path, jsonString);
       }
+    }
+
+    public class Shapes
+    {
+      public Shape[]? Shape { get; set; }
     }
   }
 }
