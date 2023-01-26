@@ -1,5 +1,5 @@
-﻿
-using System.Text.Json;
+﻿using System.IO;
+using Newtonsoft.Json;
 
 namespace Shapes
 {
@@ -14,16 +14,33 @@ namespace Shapes
         /// <param name="args">A list of command line arguments.</param>
         public static void Main(string[] args)
         {
-            // arg[0] is file type, arg[1] is name of file, 
-            string fileType = args[0].Split(".").Last();
-
-            if (fileType == "xml" | fileType == "json")
+            // arg[0] is file type, arg[1] is file name, arg[3] is output type, arg[4] is output file location
+            if (args.Length == 1)
             {
-                GenerateFile(args[0], fileType);
+                if (args[0] == "xml" || args[0] == "json")
+                {
+                    ShapeList shapeList = new ShapeList();
+                    shapeList.GenerateFile(args[0], shapeList);
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid file type for file generation.");
+                    System.Environment.Exit(1);
+                }
+            }
+            else if (args.Length == 3 & args[2] == "console")
+            {
+                Shape[] shapes = loadShapes(args[0], args[1]);
+                Output(args[2], shapes);
+            }
+            else if (args.Length == 4 & args[2] == "csv")
+            {
+                Shape[] shapes = loadShapes(args[0], args[1]);
+                Output(args[2], shapes, args[3]);
             }
             else
             {
-                Console.WriteLine("Please enter a valid file type.");
+                Console.WriteLine("Invalid command line arguments. Correct format is as follows: [file type] [file name] [output type] [output file location]");
                 System.Environment.Exit(1);
             }
         }
@@ -31,143 +48,252 @@ namespace Shapes
         /// <summary>
         /// Outputs data to a CSV file.
         /// </summary>
-        public static void Output()
+        /// <param name="outputType">The type of output to be generated.</param>
+        /// <param name="shapes">The list of shapes to be written to the file.</param>
+        /// <param name="filePath">The path to the file to be generated.</param>
+        public static void Output(string outputType, Shape[] shapes, string? filePath = null)
         {
-            // Example of data output to CSV
-            string data = "Col1, Col2, Col2";
-            string filePath = @"File.csv";
-            File.WriteAllText(filePath, data);
-            string dataFromRead = File.ReadAllText(filePath);
-            Console.WriteLine(dataFromRead);
-
-            // https://stackoverflow.com/questions/39749136/how-do-i-create-a-csv-file-in-c-sharp
-        }
-
-        /// <summary>
-        /// Generates a file of shape objects.
-        /// </summary>
-        /// <param name="filename">The name of the file to be generated.</param>
-        /// <param name="fileType">The type of file to be generated.</param>
-        public static void GenerateFile(string filename, string fileType)
-        {
-            ShapeList shapeList = new ShapeList();
-            var array = shapeList.getShapes();
-
-            if (fileType == "xml")
+            try
             {
-                System.Xml.Serialization.XmlSerializer writer =
-                new System.Xml.Serialization.XmlSerializer(
-                    typeof(Shape),
-                    new Type[] { typeof(Triangle), typeof(Ellipse), typeof(Rectangle)});
+                double[] areas = getAreas(shapes);
+                string[] categories = { "Total Area Of All Shapes", "Ellipse", "Circle", "Non-Circle", "Regular Polygons", "Square", "Equilateral", "Convex Polygons", "Rectangle", "Isosceles", "Scalene" };
 
-                var path = Directory.GetCurrentDirectory() + "//test_data.xml";
-                //Console.WriteLine("File Path: " + path);
-                System.IO.FileStream file = System.IO.File.Create(path);
-
-                foreach (Shape item in array)
+                if (filePath == null)
                 {
-                    writer.Serialize(file, item);
-                }
-
-                file.Close();
-            }
-            else
-            {
-                string jsonString = "";
-
-                foreach (Shape item in array)
-                {
-                    jsonString += JsonSerializer.Serialize(item);
-                }
-                
-                var path = Directory.GetCurrentDirectory() + "//test_data.json";
-                File.WriteAllText(path, jsonString);
-            }
-        }
-
-        /// <summary>
-        /// Generates an array of shape objects.
-        /// </summary>
-        private class ShapeList
-        {
-            private readonly string[] shapeNames = new string[] { "circle", "non-circle", "rectangle", "square", "equillateral", "isosceles", "scalene" };
-            private readonly string[] shapeClasses = new string[] { "Triangle", "Ellipse", "Rectangle" };
-            public Shape[] shapes = new Shape[20];
-
-            /// <summary>
-            /// Constructor for the ShapeList class.
-            /// </summary>
-            public ShapeList()
-            {
-                Random rnd = new Random();
-
-                for (int i = 0; i < 20; i++)
-                {
-                    int nameNum = rnd.Next(7);
-                    int classNum = rnd.Next(2);
-
-                    switch (shapeNames[nameNum])
+                    string output = "";
+                    Dictionary<string, string> builtStrings = new Dictionary<string, string>();
+                    for (int i = 0; i < areas.Length; i++)
                     {
-                        case "circle":
-                            int radius = rnd.Next(1, 15);
-                            Shape circle = new Ellipse("circle", radius, radius);
-                            shapes[i] = circle;
-                            break;
+                        if (areas[i] != 0)
+                        {
+                            string temp = buildConsoleString(categories[i], areas[i]);
+                            if (temp == "") { continue; }
+                            builtStrings[categories[i]] = temp + "\n";
+                        }
+                    }
 
-                        case "non-circle":
-                            int x = rnd.Next(1, 15);
-                            int y = rnd.Next(1, 15);
-                            Shape non_circle = new Ellipse("non-circle", x, y);
-                            shapes[i] = non_circle;
-                            break;
-
-                        case "rectangle":
-                            int width = rnd.Next(1, 15);
-                            int height = rnd.Next(1, 15);
-                            Shape rectangle = new Rectangle("rectangle", width, height);
-                            shapes[i] = rectangle;
-                            break;
-
-                        case "square":
-                            int side = rnd.Next(1, 15);
-                            Shape square = new Rectangle("square", side, side);
-                            shapes[i] = square;
-                            break;
-
-                        case "equillateral":
-                            int base_e = rnd.Next(1, 15);
-                            int height_e = base_e;
-                            Shape equillateral = new Triangle("equillateral", base_e, height_e);
-                            shapes[i] = equillateral;
-                            break;
-
-                        case "isosceles":
-                            int base_i = rnd.Next(1, 15);
-                            int height_i = rnd.Next(1, 15);
-                            Shape isosceles = new Triangle("isosceles", base_i, height_i);
-                            shapes[i] = isosceles;
-                            break;
-
-                        case "scalene":
-                            int base_s = rnd.Next(1, 15);
-                            int height_s = rnd.Next(1, 15);
-                            Shape scalene = new Triangle("scalene", base_s, height_s);
-                            shapes[i] = scalene;
-                            break;
-
-                        default:
-                            Console.WriteLine("There was an error with your switch statement when generating shape objects.");
-                            break;
+                    foreach (KeyValuePair<string, string> entry in builtStrings)
+                    {
+                        output += entry.Value;
+                    }
+                    Console.WriteLine(output);
+                }
+                else
+                {
+                    using (var csv = new StreamWriter(filePath + "//output.csv"))
+                    {
+                        for (int i = 0; i < areas.Length; i++)
+                        {
+                            string line = buildCSVString(i, categories[i], areas[i]);
+                            csv.WriteLine(line);
+                            csv.Flush();
+                        }
                     }
                 }
             }
-
-            /// <summary>
-            /// Returns an array of shape objects.
-            /// </summary>
-            public Shape[] getShapes()
+            catch
             {
-                return shapes;
+                Console.WriteLine("There was an error outputting the data.");
+                System.Environment.Exit(1);
+            }
+        }
+
+        /// <summary>
+        /// Builds a CSV string.
+        /// </summary>
+        /// <param name="row">The row number.</param>
+        /// <param name="shapeCategory">The category of the shape.</param>
+        /// <param name="area">The area of the shape.</param>
+        public static string buildCSVString(int row, string shapeCategory, double area)
+        {
+            string csvString = string.Format("{0},{1},{2}", row, shapeCategory, area);
+            return csvString;
+        }
+
+        /// <summary>
+        /// Builds an appropriate string for the console.
+        /// </summary>
+        /// <param name="shapeCategory">The category of the shape.</param>
+        /// <param name="area">The area of the shape.</param>
+        public static string buildConsoleString(string shapeCategory, double area)
+        {
+            string consoleString = "";
+            if (shapeCategory == "Total Area Of All Shapes")
+            {
+                consoleString += string.Format("{0, 20} {1, 20}\n", shapeCategory, area);
+            }
+            else if (shapeCategory == "Ellipse" || shapeCategory == "Regular Polygons" || shapeCategory == "Convex Polygons")
+            {
+                consoleString += string.Format("\t{0, -20} {1, 16}\n", shapeCategory, area);
+            }
+            else if (shapeCategory == "Square" || shapeCategory == "Rectangle" || shapeCategory == "Equilateral" || shapeCategory == "Isosceles" || shapeCategory == "Scalene" || shapeCategory == "Circle" || shapeCategory == "Non-Circle")
+            {
+                consoleString += string.Format("\t\t{0, -20} {1, 8}\n", shapeCategory, area);
+            }
+            else
+            {
+                consoleString = "";
+            }
+
+            return consoleString;
+        }
+
+        /// <summary>
+        /// Adds all the area of all the shapes.
+        /// </summary>
+        /// <param name="shapes">The array of shapes that the total area is calculated from.</param>
+        public static double[] getAreas(Shape[] shapes)
+        {
+            double totalArea = 0;
+            double regularArea = 0;
+            double convexArea = 0;
+            double ellipseArea = 0;
+            double squareArea = 0;
+            double rectangleArea = 0;
+            double circleArea = 0;
+            double nonCircleArea = 0;
+            double equilateralArea = 0;
+            double isoscelesArea = 0;
+            double scaleneArea = 0;
+
+            foreach (Shape shape in shapes)
+            {
+                totalArea += shape.Area;
+                switch (shape.Name)
+                {
+                    case "square":
+                        squareArea += shape.Area;
+                        regularArea += shape.Area;
+                        break;
+                    case "rectangle":
+                        rectangleArea += shape.Area;
+                        convexArea += shape.Area;
+                        break;
+                    case "circle":
+                        circleArea += shape.Area;
+                        ellipseArea += shape.Area;
+                        break;
+                    case "non-circle":
+                        nonCircleArea += shape.Area;
+                        ellipseArea += shape.Area;
+                        break;
+                    case "equilateral":
+                        equilateralArea += shape.Area;
+                        regularArea += shape.Area;
+                        break;
+                    case "isosceles":
+                        isoscelesArea += shape.Area;
+                        convexArea += shape.Area;
+                        break;
+                    case "scalene":
+                        scaleneArea += shape.Area;
+                        convexArea += shape.Area;
+                        break;
+                }
+            }
+
+            double[] areas = new double[11];
+            areas[0] = totalArea;
+            areas[1] = ellipseArea;
+            areas[2] = circleArea;
+            areas[3] = nonCircleArea;
+            areas[4] = regularArea;
+            areas[5] = squareArea;
+            areas[6] = equilateralArea;
+            areas[7] = convexArea;
+            areas[8] = rectangleArea;
+            areas[9] = isoscelesArea;
+            areas[10] = scaleneArea;
+            return areas;
+        }
+
+        /// <summary>
+        /// Creates a shape object.
+        /// </summary>
+        /// <param name="name">The name of the shape.</param>
+        /// <param name="x">The length of the shape on the x axis.</param>
+        /// <param name="y">The length of the shape on the y axis.</param>
+        public static Shape createShape(string name, int x, int y)
+        {
+            switch (name)
+            {
+                case "circle":
+                    Ellipse circle = new Ellipse(name, x, y);
+                    return circle;
+
+                case "non-circle":
+                    Ellipse nonCircle = new Ellipse(name, x, y);
+                    return nonCircle;
+
+                case "square":
+                    Rectangle square = new Rectangle(name, x, y);
+                    return square;
+
+                case "rectangle":
+                    Rectangle rectangle = new Rectangle(name, x, y);
+                    return rectangle;
+
+                case "equilateral":
+                    Triangle equilateral = new Triangle(name, x, y);
+                    return equilateral;
+
+                case "isosceles":
+                    Triangle isosceles = new Triangle(name, x, y);
+                    return isosceles;
+
+                case "scalene":
+                    Triangle scalene = new Triangle(name, x, y);
+                    return scalene;
+
+                default:
+                    throw new System.ArgumentException("There was an error creating the shape.");
+            }
+        }
+
+        /// <summary>
+        /// Creates shape objects from json or xml file.
+        /// </summary>
+        /// <param name="fileType">The type of file to be loaded.</param>
+        /// <param name="fileName">The name of the file to be loaded.</param>
+        public static Shape[] loadShapes(string fileType, string fileName)
+        {
+            //try
+            //{
+            if (fileType == "xml") // xml
+            {
+                Console.WriteLine("Got into loading xml");
+
+                Triangle triangle = new Triangle();
+                Shape[] list = new Shape[] { triangle };
+                return list;
+            }
+            else // json
+            {
+                string jsonString = File.ReadAllText(fileName);
+                var jsonData = JsonConvert.DeserializeObject<dynamic>(jsonString);
+
+                try
+                {
+                    int dataLength = jsonData.Count;
+                    Shape[] shapes = new Shape[dataLength];
+                    int counter = 0;
+
+                    foreach (var data in jsonData)
+                    {
+                        string name = data.Name;
+                        int x = data.X;
+                        int y = data.Y;
+                        //Console.WriteLine("Name: " + name + " X: " + x + " Y: " + y);
+                        shapes[counter] = createShape(name, x, y);
+                        counter++;
+                    }
+
+                    return shapes;
+                }
+                catch
+                {
+                    throw new System.ArgumentException("There was an error parsing the json file.");
+                }
             }
         }
     }

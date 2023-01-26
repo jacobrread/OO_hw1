@@ -1,101 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Ellipse">
-  <Name>non-circle</Name>
-  <X>6</X>
-  <Y>1</Y>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Rectangle">
+  <Name>square</Name>
+  <X>13</X>
+  <Y>13</Y>
 </Shape><?xml version="1.0" encoding="utf-8"?>
 <Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Triangle">
-  <Name>isosceles</Name>
-  <X>14</X>
-  <Y>9</Y>
-</Shape><?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Ellipse">
-  <Name>circle</Name>
-  <X>10</X>
-  <Y>10</Y>
-</Shape><?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Triangle">
-  <Name>equillateral</Name>
-  <X>2</X>
-  <Y>2</Y>
-</Shape><?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Ellipse">
-  <Name>non-circle</Name>
-  <X>7</X>
+  <Name>equilateral</Name>
+  <X>5</X>
   <Y>5</Y>
 </Shape><?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Triangle">
-  <Name>isosceles</Name>
-  <X>10</X>
-  <Y>1</Y>
-</Shape><?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Ellipse">
-  <Name>non-circle</Name>
-  <X>10</X>
-  <Y>11</Y>
-</Shape><?xml version="1.0" encoding="utf-8"?>
 <Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Rectangle">
-  <Name>rectangle</Name>
-  <X>12</X>
-  <Y>14</Y>
-</Shape><?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Ellipse">
-  <Name>non-circle</Name>
-  <X>5</X>
-  <Y>3</Y>
-</Shape><?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Triangle">
-  <Name>equillateral</Name>
-  <X>8</X>
-  <Y>8</Y>
+  <Name>square</Name>
+  <X>6</X>
+  <Y>6</Y>
 </Shape><?xml version="1.0" encoding="utf-8"?>
 <Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Ellipse">
   <Name>circle</Name>
-  <X>11</X>
-  <Y>11</Y>
+  <X>6</X>
+  <Y>6</Y>
 </Shape><?xml version="1.0" encoding="utf-8"?>
 <Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Triangle">
   <Name>scalene</Name>
-  <X>1</X>
-  <Y>3</Y>
-</Shape><?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Rectangle">
-  <Name>rectangle</Name>
-  <X>5</X>
-  <Y>10</Y>
-</Shape><?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Rectangle">
-  <Name>square</Name>
-  <X>2</X>
-  <Y>2</Y>
-</Shape><?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Ellipse">
-  <Name>circle</Name>
-  <X>7</X>
-  <Y>7</Y>
-</Shape><?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Triangle">
-  <Name>isosceles</Name>
   <X>9</X>
-  <Y>1</Y>
-</Shape><?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Rectangle">
-  <Name>square</Name>
-  <X>4</X>
-  <Y>4</Y>
+  <Y>8</Y>
 </Shape><?xml version="1.0" encoding="utf-8"?>
 <Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Ellipse">
-  <Name>circle</Name>
-  <X>11</X>
-  <Y>11</Y>
-</Shape><?xml version="1.0" encoding="utf-8"?>
-<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Rectangle">
-  <Name>square</Name>
-  <X>12</X>
+  <Name>non-circle</Name>
+  <X>10</X>
   <Y>12</Y>
 </Shape><?xml version="1.0" encoding="utf-8"?>
 <Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Rectangle">
   <Name>rectangle</Name>
-  <X>14</X>
-  <Y>10</Y>
+  <X>10</X>
+  <Y>14</Y>
+</Shape><?xml version="1.0" encoding="utf-8"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Rectangle">
+  <Name>square</Name>
+  <X>5</X>
+  <Y>5</Y>
+</Shape><?xml version="1.0" encoding="utf-8"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Rectangle">
+  <Name>square</Name>
+  <X>5</X>
+  <Y>5</Y>
+</Shape><?xml version="1.0" encoding="utf-8"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Triangle">
+  <Name>equilateral</Name>
+  <X>9</X>
+  <Y>9</Y>
+</Shape><?xml version="1.0" encoding="utf-8"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Ellipse">
+  <Name>circle</Name>
+  <X>13</X>
+  <Y>13</Y>
+</Shape><?xml version="1.0" encoding="utf-8"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Rectangle">
+  <Name>square</Name>
+  <X>3</X>
+  <Y>3</Y>
+</Shape><?xml version="1.0" encoding="utf-8"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Ellipse">
+  <Name>circle</Name>
+  <X>1</X>
+  <Y>1</Y>
+</Shape><?xml version="1.0" encoding="utf-8"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Rectangle">
+  <Name>rectangle</Name>
+  <X>5</X>
+  <Y>9</Y>
+</Shape><?xml version="1.0" encoding="utf-8"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Triangle">
+  <Name>scalene</Name>
+  <X>12</X>
+  <Y>6</Y>
+</Shape><?xml version="1.0" encoding="utf-8"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Ellipse">
+  <Name>non-circle</Name>
+  <X>9</X>
+  <Y>3</Y>
+</Shape><?xml version="1.0" encoding="utf-8"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Ellipse">
+  <Name>non-circle</Name>
+  <X>9</X>
+  <Y>14</Y>
+</Shape><?xml version="1.0" encoding="utf-8"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Ellipse">
+  <Name>circle</Name>
+  <X>4</X>
+  <Y>4</Y>
+</Shape><?xml version="1.0" encoding="utf-8"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Rectangle">
+  <Name>rectangle</Name>
+  <X>3</X>
+  <Y>8</Y>
+</Shape><?xml version="1.0" encoding="utf-8"?>
+<Shape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:type="Triangle">
+  <Name>scalene</Name>
+  <X>9</X>
+  <Y>1</Y>
 </Shape>
